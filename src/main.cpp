@@ -12,18 +12,31 @@
 
 		6. Завершение
 */
+#include <thread>
+#include <windows.h>
+
+#include "cursor.hpp"
+#include "game_map.hpp"
 
 int main() {
 	// 1. Установка параметров игры
+	using namespace std::chrono_literals;
+	biv::hide_cursor();
+	biv::GameMap game_map;
 	
 	do {
 		// 2. Получение пользовательского ввода
+		if (GetKeyState(VK_ESCAPE) < 0) break;
 		
 		// 3. Обновление внутреннего состояния игры
 		
 		// 4. Обновление изображения на экране
+		game_map.refresh();
+		biv::set_cursor_position(0, 0);
+		game_map.show();
 		
-	} while (/* 5. Проверка того, не окончена ли игра */ false);
+		std::this_thread::sleep_for(10ms);
+	} while (/* 5. Проверка того, не окончена ли игра */ true);
 	
 	// 6. Завершение
 	
