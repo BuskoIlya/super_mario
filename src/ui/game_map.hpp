@@ -1,5 +1,9 @@
 #pragma once
 
+#include <vector>
+
+#include "uiobject.hpp"
+
 namespace biv {
 	class GameMap {
 		private:
@@ -8,9 +12,12 @@ namespace biv {
 			
 			char map[height][width + 1];
 			
+			std::vector<UIObject*> items;
+			
 		public:
 			GameMap();
 			
+			void add_item(UIObject*);
 			void clear() noexcept;
 			void refresh() noexcept;
 			void show() const noexcept;

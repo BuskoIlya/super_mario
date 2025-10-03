@@ -17,12 +17,17 @@
 
 #include "cursor.hpp"
 #include "game_map.hpp"
+#include "rect.hpp"
+#include "ship.hpp"
 
 int main() {
 	// 1. Установка параметров игры
 	using namespace std::chrono_literals;
 	biv::hide_cursor();
 	biv::GameMap game_map;
+	
+	biv::Ship* ship = new biv::Ship(biv::Rect({20, 25}, 40, 2));
+	game_map.add_item(ship);
 	
 	do {
 		// 2. Получение пользовательского ввода
@@ -35,7 +40,6 @@ int main() {
 		biv::set_cursor_position(0, 0);
 		game_map.show();
 		
-		std::this_thread::sleep_for(10ms);
 	} while (/* 5. Проверка того, не окончена ли игра */ true);
 	
 	// 6. Завершение

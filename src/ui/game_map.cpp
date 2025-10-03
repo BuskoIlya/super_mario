@@ -9,6 +9,10 @@ GameMap::GameMap() {
 	clear();
 }
 
+void GameMap::add_item(UIObject* item) {
+	items.push_back(item);
+}
+
 void GameMap::clear() noexcept {
 	// Воздух
 	for (int i = 0; i < width; i++) {
@@ -33,6 +37,23 @@ void GameMap::clear() noexcept {
 
 void GameMap::refresh() noexcept {
 	clear();
+	
+	for (UIObject* item: items) {
+		int left = item->get_left();
+		int top = item->get_top();
+		int right = item->get_right();
+		int bottom = item->get_bottom();
+		
+		char brush = item->get_brush();
+		
+		for (int i = left; i < right; i++) {
+			for (int j = top; j < bottom; j++) {
+				if (is_on_map(i, j)) {
+					map[j][i] = brush;
+				}
+			}
+		}
+	}
 }
 
 void GameMap::show() const noexcept {
