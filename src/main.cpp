@@ -16,18 +16,26 @@
 
 #include "cursor.hpp"
 #include "first_level.hpp"
+#include "game.hpp"
 #include "game_level.hpp"
 #include "game_map.hpp"
 
 int main() {
 	// 1. Установка параметров игры
 	biv::hide_cursor();
-	biv::GameMap game_map;
 	
-	biv::GameLevel* level = new biv::FirstLevel(&game_map);
+	biv::Game game;
+	biv::GameMap game_map(30, 200);
+	biv::GameLevel* level = new biv::FirstLevel(&game, &game_map);
 	
 	do {
-		// 2. Получение пользовательского ввода		
+		// 2. Получение пользовательского ввода	
+		if (GetKeyState('A') < 0) {
+			game.move_map_right();
+		}
+		if (GetKeyState('D') < 0) {
+			game.move_map_left();
+		}
 		
 		// 3. Обновление внутреннего состояния игры
 		

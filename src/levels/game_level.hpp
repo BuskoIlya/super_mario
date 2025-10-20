@@ -14,21 +14,23 @@
 #include <cstddef>
 #include <vector>
 
+#include "game.hpp"
 #include "game_map.hpp"
-#include "uiobject.hpp"
+#include "ship.hpp"
 
 namespace biv {
 	class GameLevel {
 		protected:
+			Game* game = nullptr;
 			GameMap* game_map = nullptr;
 			
-			std::vector<UIObject*> ships;
+			std::vector<Ship*> ships;
 			
 			GameLevel* parent = nullptr;
 			GameLevel* next = nullptr;
 
 		protected:
-			GameLevel(GameMap* game_map);
+			GameLevel(Game* game, GameMap* game_map);
 
 		public:
 			virtual ~GameLevel();

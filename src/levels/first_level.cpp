@@ -2,11 +2,11 @@
 
 #include "rect.hpp"
 #include "ship.hpp"
-#include "uiobject.hpp"
 
 using biv::FirstLevel;
 
-FirstLevel::FirstLevel(GameMap* game_map) : GameLevel(game_map) {
+FirstLevel::FirstLevel(Game* game, GameMap* game_map) 
+	: GameLevel(game, game_map) {
 	init_data();
 }
 
@@ -25,7 +25,11 @@ void FirstLevel::init_data() {
 	ships.push_back(new Ship(Rect({150, 25}, 40, 2)));
 	ships.push_back(new Ship(Rect({210, 20}, 15, 7)));
 
-	for (biv::UIObject* ship: ships) {
+	for (biv::Ship* ship: ships) {
+		game->add_map_movable(ship);
+	}
+	
+	for (biv::Ship* ship: ships) {
 		game_map->add_item(ship);
 	}
 }

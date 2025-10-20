@@ -2,7 +2,8 @@
 
 using biv::GameLevel;
 
-GameLevel::GameLevel(GameMap* game_map) {
+GameLevel::GameLevel(Game* game, GameMap* game_map) {
+	this->game = game;
 	this->game_map = game_map;
 }
 
@@ -27,7 +28,7 @@ bool GameLevel::is_final() const noexcept {
 // 									PROTECTED
 // ----------------------------------------------------------------------------
 void GameLevel::clear_data() {
-	for (UIObject* item: ships) {
+	for (Ship* item: ships) {
 		delete item;
 	}
 	ships.clear();

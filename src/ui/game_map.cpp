@@ -5,8 +5,22 @@
 
 using biv::GameMap;
 
-GameMap::GameMap() {
+GameMap::GameMap(const int height, const int width) 
+	: height(height), width(width) {
+
+	map = new char*[height];
+	for (int i = 0; i < height; i++) {
+		map[i] = new char[width + 1];
+	}
+		
 	clear();
+}
+
+GameMap::~GameMap() {
+	for (int i = 0; i < height; i++) {
+		delete [] map[i];
+	}
+	delete [] map;
 }
 
 void GameMap::add_item(UIObject* item) {

@@ -7,15 +7,16 @@
 namespace biv {
 	class GameMap {
 		private:
-			static const int width = 200;
-			static const int height = 30;
-			
-			char map[height][width + 1];
+			const int height;
+			const int width;
+	
+			char** map;
 			
 			std::vector<UIObject*> items;
 			
 		public:
-			GameMap();
+			GameMap(const int height, const int width);
+			~GameMap();
 			
 			void add_item(UIObject*);
 			void clear() noexcept;
