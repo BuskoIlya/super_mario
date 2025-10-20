@@ -1,8 +1,8 @@
-#include "cursor.hpp"
+#include "os_control_settings.hpp"
 
 #include <windows.h>
 
-void biv::hide_cursor() {
+void biv::os::init_settings() {
 	void* handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO structCursorInfo;
 	GetConsoleCursorInfo(handle, &structCursorInfo);
@@ -10,9 +10,9 @@ void biv::hide_cursor() {
 	SetConsoleCursorInfo(handle, &structCursorInfo);
 }
 
-void biv::set_cursor_position(const int x, const int y) {
+void biv::os::set_cursor_start_position() {
 	COORD coord;
-	coord.X = x;
-	coord.Y = y;
+	coord.X = 0;
+	coord.Y = 0;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
