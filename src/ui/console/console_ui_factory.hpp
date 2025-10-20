@@ -12,8 +12,8 @@ namespace biv {
 	class ConsoleUIFactory : public UIFactory {
 		private:
 			Game* game = nullptr;
+
 			ConsoleGameMap* game_map = nullptr;
-			
 			std::vector<ConsoleShip*> ships;
 			ConsoleMario* mario;
 

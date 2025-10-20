@@ -18,6 +18,17 @@ void Movable::jump() noexcept {
 	}
 }
 
+void Movable::move_horizontal_offset(const float offset) noexcept {
+	top_left.x += offset;
+}
+
+void Movable::move_vertical_offset(const float offset) noexcept {
+	top_left.y += offset;
+}
+
+// ----------------------------------------------------------------------------
+// 									VIRTUAL
+// ----------------------------------------------------------------------------
 void Movable::move_horizontally() noexcept {
 	top_left.x += hspeed;
 }

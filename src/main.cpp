@@ -17,6 +17,7 @@
 #include "console_ui_factory.hpp"
 #include "game.hpp"
 #include "game_map.hpp"
+#include "map_movable.hpp"
 #include "mario.hpp"
 #include "os_control_settings.hpp"
 #include "ui_factory.hpp"
@@ -39,10 +40,18 @@ int main() {
 		user_input = biv::os::get_user_key_input();
 		switch (user_input) {
 			case biv::os::UserKeyInput::MAP_LEFT:
-				game.move_map_left();
+				mario->move_horizontal_offset(biv::MapMovable::MAP_STEP);
+				if (!game.check_static_collisions(mario)) {
+					game.move_map_left();
+				}
+				mario->move_horizontal_offset(-biv::MapMovable::MAP_STEP);
 				break;
 			case biv::os::UserKeyInput::MAP_RIGHT:
-				game.move_map_right();
+				mario->move_horizontal_offset(-biv::MapMovable::MAP_STEP);
+				if (!game.check_static_collisions(mario)) {
+					game.move_map_right();
+				}
+				mario->move_horizontal_offset(biv::MapMovable::MAP_STEP);
 				break;
 			case biv::os::UserKeyInput::MARIO_JUMP:
 				mario->jump();
@@ -50,8 +59,11 @@ int main() {
 		}
 		
 		// 3. Обновление внутреннего состояния игры
+		game.move_objs_horizontally();
+		game.check_horizontally_static_collisions();
+		
 		game.move_objs_vertically();
-		game.check_ships_collisions();
+		game.check_vertically_static_collisions();
 		
 		// 4. Обновление изображения на экране
 		game_map->refresh();

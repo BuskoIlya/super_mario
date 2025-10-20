@@ -2,7 +2,7 @@
 
 namespace biv {
 	class MapMovable {
-		protected: 
+		public: 
 			static const int MAP_STEP = 1;
 
 		public:
