@@ -1,11 +1,11 @@
-#include "game_map.hpp"
+#include "console_game_map.hpp"
 
 #include <cstdio>
 #include <iostream>
 
-using biv::GameMap;
+using biv::ConsoleGameMap;
 
-GameMap::GameMap(const int height, const int width) 
+ConsoleGameMap::ConsoleGameMap(const int height, const int width) 
 	: height(height), width(width) {
 
 	map = new char*[height];
@@ -16,18 +16,18 @@ GameMap::GameMap(const int height, const int width)
 	clear();
 }
 
-GameMap::~GameMap() {
+ConsoleGameMap::~ConsoleGameMap() {
 	for (int i = 0; i < height; i++) {
 		delete [] map[i];
 	}
 	delete [] map;
 }
 
-void GameMap::add_item(UIObject* item) {
+void ConsoleGameMap::add_item(ConsoleUIObject* item) {
 	items.push_back(item);
 }
 
-void GameMap::clear() noexcept {
+void ConsoleGameMap::clear() noexcept {
 	// Воздух
 	for (int i = 0; i < width; i++) {
 		map[0][i] = ' ';
@@ -49,10 +49,10 @@ void GameMap::clear() noexcept {
 	}
 }
 
-void GameMap::refresh() noexcept {
+void ConsoleGameMap::refresh() noexcept {
 	clear();
 	
-	for (UIObject* item: items) {
+	for (ConsoleUIObject* item: items) {
 		int left = item->get_left();
 		int top = item->get_top();
 		int right = item->get_right();
@@ -70,11 +70,11 @@ void GameMap::refresh() noexcept {
 	}
 }
 
-void GameMap::remove_items() {
+void ConsoleGameMap::remove_items() {
 	items.clear();
 }
 
-void GameMap::show() const noexcept {
+void ConsoleGameMap::show() const noexcept {
 	for (int i = 0; i < height; i++) {
 		std::cout << map[i];
 	}
@@ -83,6 +83,6 @@ void GameMap::show() const noexcept {
 // ----------------------------------------------------------------------------
 // 									PRIVATE
 // ----------------------------------------------------------------------------
-bool GameMap::is_on_map(const int x, const int y) const noexcept {
+bool ConsoleGameMap::is_on_map(const int x, const int y) const noexcept {
 	return x >=0 && x < width && y >= 0 && y < height;
 }

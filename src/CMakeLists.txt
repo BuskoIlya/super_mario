@@ -8,9 +8,7 @@ set(SOURCES main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-add_subdirectory(console)
+add_subdirectory(os_controls)
 add_subdirectory(controller)
-add_subdirectory(items)
-add_subdirectory(levels)
 add_subdirectory(model)
 add_subdirectory(ui)

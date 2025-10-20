@@ -7,7 +7,7 @@ using biv::Rect;
 Rect::Rect(const Coord& top_left, const int width, const int height)
 	: top_left(top_left), width(width), height(height) {}
 
-int Rect::get_bottom() const noexcept {
+/*int Rect::get_bottom() const noexcept {
 	return std::round(top_left.y + height);
 }
 
@@ -25,7 +25,7 @@ int Rect::get_right() const noexcept {
 
 int Rect::get_top() const noexcept {
 	return std::round(top_left.y);
-}
+}*/
 
 float Rect::get_x() const noexcept {
 	return top_left.x;
