@@ -6,6 +6,11 @@ void ConsoleUIFactory::create_game_data(Game* game) {
 	game = game;
 	game_map = new ConsoleGameMap(30, 200);
 	
+	mario = new ConsoleMario({39, 10}, 3, 3);
+	game->add_collisionable(mario);
+	game->add_movable(mario);
+	game_map->add_obj(mario);
+	
 	ships.push_back(new ConsoleShip({20, 25}, 40, 2));
 	ships.push_back(new ConsoleShip({60, 20}, 40, 7));
 	ships.push_back(new ConsoleShip({100, 25}, 20, 2));
@@ -15,13 +20,18 @@ void ConsoleUIFactory::create_game_data(Game* game) {
 
 	for (biv::ConsoleShip* ship: ships) {
 		game->add_map_movable(ship);
+		game->add_ship(ship);
 	}
 	
 	for (biv::ConsoleShip* ship: ships) {
-		game_map->add_item(ship);
+		game_map->add_obj(ship);
 	}
 }
 
 biv::GameMap* ConsoleUIFactory::get_game_map() {
 	return game_map;
+}
+
+biv::Mario* ConsoleUIFactory::get_mario() {
+	return mario;
 }

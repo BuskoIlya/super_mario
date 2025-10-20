@@ -1,8 +1,9 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
 		console_game_map.cpp
-		console_ui_factory.cpp
+		console_mario.cpp
 		console_ship.cpp
+		console_ui_factory.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE

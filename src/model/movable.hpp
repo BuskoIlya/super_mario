@@ -1,0 +1,28 @@
+#pragma once
+
+#include "rect.hpp"
+
+namespace biv {
+	class Movable : public Rect {
+		protected:
+			static constexpr float JUMP_SPEED = -1;
+			static constexpr float MAX_V_SPEED = 0.98;
+			static constexpr float V_ACCELERATION = 0.05f;
+
+			float vspeed = 0;
+			float hspeed = 0;
+
+		protected:
+			Movable(
+				const Coord& top_left, 
+				const int width, const int height, 
+				const float vspeed, const float hspeed
+				);
+
+		public:
+			float get_vspeed() const noexcept;
+			void jump() noexcept;
+			virtual void move_horizontally() noexcept;
+			virtual void move_vertically() noexcept;
+	};
+}

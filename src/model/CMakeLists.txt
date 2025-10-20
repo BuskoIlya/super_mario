@@ -1,5 +1,8 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
+		collisionable.cpp
+		mario.cpp
+		movable.cpp
 		rect.cpp
 		ship.cpp
 )

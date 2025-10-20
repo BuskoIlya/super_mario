@@ -13,17 +13,17 @@ namespace biv {
 	
 			char** map;
 			
-			std::vector<ConsoleUIObject*> items;
+			std::vector<ConsoleUIObject*> objs;
 			
 		public:
 			ConsoleGameMap(const int height, const int width);
 			~ConsoleGameMap();
 			
-			void add_item(ConsoleUIObject*);
+			void add_obj(ConsoleUIObject*);
 			
 			void clear() noexcept override;
 			void refresh() noexcept override;
-			void remove_items() override;
+			void remove_objs() override;
 			void show() const noexcept override;
 			
 		private:

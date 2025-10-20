@@ -3,9 +3,10 @@
 namespace biv {
 	namespace os {
 		enum class UserKeyInput {
+			EXIT,
 			MAP_LEFT,
 			MAP_RIGHT,
-			EXIT,
+			MARIO_JUMP,
 			NO_INPUT
 		};
 	

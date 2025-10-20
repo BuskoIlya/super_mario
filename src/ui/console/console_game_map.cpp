@@ -23,8 +23,8 @@ ConsoleGameMap::~ConsoleGameMap() {
 	delete [] map;
 }
 
-void ConsoleGameMap::add_item(ConsoleUIObject* item) {
-	items.push_back(item);
+void ConsoleGameMap::add_obj(ConsoleUIObject* obj) {
+	objs.push_back(obj);
 }
 
 void ConsoleGameMap::clear() noexcept {
@@ -52,13 +52,13 @@ void ConsoleGameMap::clear() noexcept {
 void ConsoleGameMap::refresh() noexcept {
 	clear();
 	
-	for (ConsoleUIObject* item: items) {
-		int left = item->get_left();
-		int top = item->get_top();
-		int right = item->get_right();
-		int bottom = item->get_bottom();
+	for (ConsoleUIObject* obj: objs) {
+		int left = obj->get_left();
+		int top = obj->get_top();
+		int right = obj->get_right();
+		int bottom = obj->get_bottom();
 		
-		char brush = item->get_brush();
+		char brush = obj->get_brush();
 		
 		for (int i = left; i < right; i++) {
 			for (int j = top; j < bottom; j++) {
@@ -70,8 +70,8 @@ void ConsoleGameMap::refresh() noexcept {
 	}
 }
 
-void ConsoleGameMap::remove_items() {
-	items.clear();
+void ConsoleGameMap::remove_objs() {
+	objs.clear();
 }
 
 void ConsoleGameMap::show() const noexcept {

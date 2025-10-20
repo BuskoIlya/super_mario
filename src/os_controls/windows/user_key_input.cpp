@@ -9,6 +9,8 @@ UserKeyInput biv::os::get_user_key_input() {
 		return UserKeyInput::MAP_RIGHT;
 	} else if (GetKeyState('D') < 0) {
 		return UserKeyInput::MAP_LEFT;
+	} else if (GetKeyState(VK_SPACE) < 0) {
+		return UserKeyInput::MARIO_JUMP;
 	} else if (GetKeyState(VK_ESCAPE) < 0) {
 		return UserKeyInput::EXIT;
 	} else {
