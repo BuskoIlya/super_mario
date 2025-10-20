@@ -56,6 +56,10 @@ void GameMap::refresh() noexcept {
 	}
 }
 
+void GameMap::remove_items() {
+	items.clear();
+}
+
 void GameMap::show() const noexcept {
 	for (int i = 0; i < height; i++) {
 		std::cout << map[i];

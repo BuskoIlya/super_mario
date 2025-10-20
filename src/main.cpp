@@ -12,26 +12,22 @@
 
 		6. Завершение
 */
-#include <thread>
 #include <windows.h>
 
 #include "cursor.hpp"
+#include "first_level.hpp"
+#include "game_level.hpp"
 #include "game_map.hpp"
-#include "rect.hpp"
-#include "ship.hpp"
 
 int main() {
 	// 1. Установка параметров игры
-	using namespace std::chrono_literals;
 	biv::hide_cursor();
 	biv::GameMap game_map;
 	
-	biv::Ship* ship = new biv::Ship(biv::Rect({20, 25}, 40, 2));
-	game_map.add_item(ship);
+	biv::GameLevel* level = new biv::FirstLevel(&game_map);
 	
 	do {
-		// 2. Получение пользовательского ввода
-		if (GetKeyState(VK_ESCAPE) < 0) break;
+		// 2. Получение пользовательского ввода		
 		
 		// 3. Обновление внутреннего состояния игры
 		
@@ -39,8 +35,7 @@ int main() {
 		game_map.refresh();
 		biv::set_cursor_position(0, 0);
 		game_map.show();
-		
-	} while (/* 5. Проверка того, не окончена ли игра */ true);
+	} while (/* 5. Проверка того, не окончена ли игра */ GetKeyState(VK_ESCAPE) >= 0);
 	
 	// 6. Завершение
 	

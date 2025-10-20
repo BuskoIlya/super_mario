@@ -20,6 +20,7 @@ namespace biv {
 			void add_item(UIObject*);
 			void clear() noexcept;
 			void refresh() noexcept;
+			void remove_items();
 			void show() const noexcept;
 			
 		private:
