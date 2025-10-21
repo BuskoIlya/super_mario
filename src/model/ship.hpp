@@ -4,7 +4,7 @@
 #include "rect.hpp"
 
 namespace biv {
-	class Ship : public Rect, public MapMovable {
+	class Ship : virtual public Rect, public MapMovable {
 		public:
 			Ship(const Coord& top_left, const int width, const int height);
 			

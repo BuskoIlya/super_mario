@@ -3,7 +3,7 @@
 #include "rect.hpp"
 
 namespace biv {
-	class Movable : public Rect {
+	class Movable : virtual public Rect {
 		protected:
 			static constexpr float JUMP_SPEED = -1;
 			static constexpr float MAX_V_SPEED = 0.98;
@@ -13,11 +13,12 @@ namespace biv {
 			float hspeed = 0;
 
 		protected:
+			Movable() = default;
 			Movable(
 				const Coord& top_left, 
 				const int width, const int height, 
 				const float vspeed, const float hspeed
-				);
+			);
 
 		public:
 			float get_vspeed() const noexcept;

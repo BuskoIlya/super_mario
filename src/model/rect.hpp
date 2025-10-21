@@ -10,6 +10,7 @@ namespace biv {
 			int height;
 
 		public:
+			Rect() = default;
 			Rect(const Coord& top_left, const int width, const int height);
 
 			int get_bottom() const noexcept;

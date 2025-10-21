@@ -6,7 +6,13 @@ Movable::Movable(
 	const Coord& top_left, 
 	const int width, const int height, 
 	const float vspeed, const float hspeed
-	) : Rect(top_left, width, height), vspeed(vspeed), hspeed(hspeed) {}
+) {
+	this->top_left = top_left;
+	this->width = width;
+	this->height = height;
+	this->vspeed = vspeed;
+	this->hspeed = hspeed;
+}
 
 float Movable::get_vspeed() const noexcept {
 	return vspeed;

@@ -4,6 +4,7 @@ target_sources(${PROJECT_NAME}
 		console_mario.cpp
 		console_ship.cpp
 		console_ui_factory.cpp
+		console_ui_obj_rect_adapter.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE

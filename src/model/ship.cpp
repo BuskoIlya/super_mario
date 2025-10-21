@@ -2,8 +2,11 @@
 
 using biv::Ship;
 
-Ship::Ship(const Coord& top_left, const int width, const int height) 
-	: Rect(top_left, width, height) {}
+Ship::Ship(const Coord& top_left, const int width, const int height) {
+	this->top_left = top_left;
+	this->width = width;
+	this->height = height;
+}
 
 void Ship::move_map_left() noexcept {
 	top_left.x -= MapMovable::MAP_STEP;
