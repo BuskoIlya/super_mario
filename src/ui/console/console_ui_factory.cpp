@@ -19,6 +19,7 @@ void ConsoleUIFactory::create_mario(
 ) {
 	game->remove_collisionable(mario);
 	game->remove_movable(mario);
+	game->remove_mario();
 	game_map->remove_obj(mario);
 	delete mario;
 	mario = nullptr;
@@ -26,6 +27,7 @@ void ConsoleUIFactory::create_mario(
 	mario = new ConsoleMario(top_left, width, height);
 	game->add_collisionable(mario);
 	game->add_movable(mario);
+	game->add_mario(mario);
 	game_map->add_obj(mario);
 }
 

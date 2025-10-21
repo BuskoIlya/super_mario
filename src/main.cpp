@@ -57,6 +57,9 @@ int main() {
 			case biv::os::UserKeyInput::MARIO_JUMP:
 				mario->jump();
 				break;
+			case biv::os::UserKeyInput::EXIT:
+				game.finish();
+				break;
 		}
 		
 		// 3. Обновление внутреннего состояния игры
@@ -72,6 +75,17 @@ int main() {
 			std::this_thread::sleep_for(1000ms);
 		}
 		
+		if (game.is_level_end()) {
+			if (!game_level->is_final()) {
+				game_level = game_level->get_next();
+				mario = ui_factory->get_mario();
+				std::this_thread::sleep_for(1000ms);
+				game.start_level();
+			} else {
+				game.finish();
+			}
+		}
+		
 		// 4. Обновление изображения на экране
 		game_map->refresh();
 		biv::os::set_cursor_start_position();
@@ -79,7 +93,7 @@ int main() {
 		std::this_thread::sleep_for(10ms);
 	} while (
 		/* 5. Проверка того, не окончена ли игра */ 
-		user_input != biv::os::UserKeyInput::EXIT
+		!game.is_finished()
 	);
 	
 	// 6. Завершение

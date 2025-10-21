@@ -14,6 +14,10 @@ void Game::add_map_movable(MapMovable* obj) {
 	map_movable_objs.push_back(obj);
 }
 
+void Game::add_mario(Mario* obj) {
+	mario = obj;
+}
+
 void Game::add_movable(Movable* obj) {
 	movable_objs.push_back(obj);
 }
@@ -43,6 +47,10 @@ void Game::check_horizontally_static_collisions() noexcept {
 }
 
 void Game::check_vertically_static_collisions() noexcept {
+	if (mario->has_collision(static_objs[static_objs.size() - 1])) {
+		is_level_end_ = true;
+	}
+	
 	for (Collisionable* obj: collisionable_objs) {
 		for (Rect* ship: static_objs) {
 			if (obj->has_collision(ship)) {
@@ -51,6 +59,18 @@ void Game::check_vertically_static_collisions() noexcept {
 			}
 		}
 	}
+}
+
+void Game::finish() noexcept {
+	is_finished_ = true;
+}
+
+bool Game::is_finished() const noexcept {
+	return is_finished_;
+}
+
+bool Game::is_level_end() const noexcept {
+	return is_level_end_;
 }
 
 void Game::move_map_left() noexcept {
@@ -95,6 +115,10 @@ void Game::remove_map_movable(MapMovable* obj) {
 	);
 }
 
+void Game::remove_mario() noexcept {
+	mario = nullptr;
+}
+
 void Game::remove_movable(Movable* obj) {
 	movable_objs.erase(
 		std::remove(
@@ -109,6 +133,7 @@ void Game::remove_objs() {
 	map_movable_objs.clear();
 	movable_objs.clear();
 	static_objs.clear();
+	remove_mario();
 }
 
 void Game::remove_static_obj(Rect* obj) {
@@ -118,4 +143,8 @@ void Game::remove_static_obj(Rect* obj) {
 		), 
 		static_objs.end()
 	);
+}
+
+void Game::start_level() noexcept {
+	is_level_end_ = false;
 }
