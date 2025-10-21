@@ -8,11 +8,11 @@ namespace biv {
 		public:
 			ConsoleShip(const Coord& top_left, const int width, const int height);
 			
-			virtual int get_bottom() const noexcept override;
-			virtual char get_brush() const noexcept override;
-			virtual int get_height() const noexcept override;
-			virtual int get_left() const noexcept override;
-			virtual int get_right() const noexcept override;
-			virtual int get_top() const noexcept override;
+			int get_bottom() const noexcept override;
+			char get_brush() const noexcept override;
+			int get_height() const noexcept override;
+			int get_left() const noexcept override;
+			int get_right() const noexcept override;
+			int get_top() const noexcept override;
 	};
 }

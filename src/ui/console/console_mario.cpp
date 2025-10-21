@@ -8,7 +8,7 @@ ConsoleMario::ConsoleMario(const Coord& top_left, const int width, const int hei
 	: Mario(top_left, width, height) {}
 
 int ConsoleMario::get_bottom() const noexcept {
-	return std::round(top_left.y + height);
+	return Rect::get_bottom();
 }
 
 char ConsoleMario::get_brush() const noexcept {
@@ -16,19 +16,19 @@ char ConsoleMario::get_brush() const noexcept {
 }
 
 int ConsoleMario::get_height() const noexcept {
-	return height;
+	return Rect::get_height();
 }
 
 int ConsoleMario::get_left() const noexcept {
-	return std::round(top_left.x);
+	return Rect::get_left();
 }
 
 int ConsoleMario::get_right() const noexcept {
-	return std::round(top_left.x + width);
+	return Rect::get_right();
 }
 
 int ConsoleMario::get_top() const noexcept {
-	return std::round(top_left.y);
+	return Rect::get_top();
 }
 
 

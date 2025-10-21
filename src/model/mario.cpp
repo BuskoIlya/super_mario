@@ -1,5 +1,7 @@
 #include "mario.hpp"
 
+#include "map_movable.hpp"
+
 using biv::Mario;
 
 Mario::Mario(const Coord& top_left, const int width, const int height) 
@@ -11,6 +13,14 @@ biv::Rect Mario::get_rect() const noexcept {
 
 biv::Speed Mario::get_speed() const noexcept {
 	return {vspeed, hspeed};
+}
+
+void Mario::move_map_left() noexcept {
+	move_horizontal_offset(biv::MapMovable::MAP_STEP);
+}
+
+void Mario::move_map_right() noexcept {
+	move_horizontal_offset(-biv::MapMovable::MAP_STEP);
 }
 
 void Mario::process_hero_collision(Collisionable* hero) noexcept {}

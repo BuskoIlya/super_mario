@@ -17,7 +17,6 @@
 #include "console_ui_factory.hpp"
 #include "game.hpp"
 #include "game_map.hpp"
-#include "map_movable.hpp"
 #include "mario.hpp"
 #include "os_control_settings.hpp"
 #include "ui_factory.hpp"
@@ -40,18 +39,18 @@ int main() {
 		user_input = biv::os::get_user_key_input();
 		switch (user_input) {
 			case biv::os::UserKeyInput::MAP_LEFT:
-				mario->move_horizontal_offset(biv::MapMovable::MAP_STEP);
+				mario->move_map_left();
 				if (!game.check_static_collisions(mario)) {
 					game.move_map_left();
 				}
-				mario->move_horizontal_offset(-biv::MapMovable::MAP_STEP);
+				mario->move_map_right();
 				break;
 			case biv::os::UserKeyInput::MAP_RIGHT:
-				mario->move_horizontal_offset(-biv::MapMovable::MAP_STEP);
+				mario->move_map_right();
 				if (!game.check_static_collisions(mario)) {
 					game.move_map_right();
 				}
-				mario->move_horizontal_offset(biv::MapMovable::MAP_STEP);
+				mario->move_map_left();
 				break;
 			case biv::os::UserKeyInput::MARIO_JUMP:
 				mario->jump();
