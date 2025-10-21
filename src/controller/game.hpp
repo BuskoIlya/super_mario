@@ -21,7 +21,7 @@ namespace biv {
 			void add_collisionable(Collisionable*);
 			void add_map_movable(MapMovable*);
 			void add_movable(Movable*);
-			void add_ship(Rect*);
+			void add_static_obj(Rect*);
 			
 			void check_horizontally_static_collisions() noexcept;
 			void check_vertically_static_collisions() noexcept;
@@ -31,5 +31,11 @@ namespace biv {
 			void move_map_right() noexcept;
 			void move_objs_horizontally() noexcept;
 			void move_objs_vertically() noexcept;
+			
+			void remove_collisionable(Collisionable*);
+			void remove_map_movable(MapMovable*);
+			void remove_movable(Movable*);
+			void remove_objs();
+			void remove_static_obj(Rect*);
 	};
 }

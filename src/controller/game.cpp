@@ -1,5 +1,7 @@
 #include "game.hpp"
 
+#include <algorithm>
+
 using biv::Game;
 
 Game::Game() {}
@@ -16,7 +18,7 @@ void Game::add_movable(Movable* obj) {
 	movable_objs.push_back(obj);
 }
 
-void Game::add_ship(Rect* obj) {
+void Game::add_static_obj(Rect* obj) {
 	static_objs.push_back(obj);
 }
 
@@ -73,4 +75,47 @@ void Game::move_objs_vertically() noexcept {
 	for (Movable* obj: movable_objs) {
 		obj->move_vertically();
 	}
+}
+
+void Game::remove_collisionable(Collisionable* obj) {
+	collisionable_objs.erase(
+		std::remove(
+			collisionable_objs.begin(), collisionable_objs.end(), obj
+		), 
+		collisionable_objs.end()
+	);
+}
+
+void Game::remove_map_movable(MapMovable* obj) {
+	map_movable_objs.erase(
+		std::remove(
+			map_movable_objs.begin(), map_movable_objs.end(), obj
+		), 
+		map_movable_objs.end()
+	);
+}
+
+void Game::remove_movable(Movable* obj) {
+	movable_objs.erase(
+		std::remove(
+			movable_objs.begin(), movable_objs.end(), obj
+		), 
+		movable_objs.end()
+	);
+}
+
+void Game::remove_objs() {
+	collisionable_objs.clear();
+	map_movable_objs.clear();
+	movable_objs.clear();
+	static_objs.clear();
+}
+
+void Game::remove_static_obj(Rect* obj) {
+	static_objs.erase(
+		std::remove(
+			static_objs.begin(), static_objs.end(), obj
+		), 
+		static_objs.end()
+	);
 }

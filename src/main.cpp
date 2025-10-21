@@ -15,7 +15,9 @@
 #include <thread>
 
 #include "console_ui_factory.hpp"
+#include "first_level.hpp"
 #include "game.hpp"
+#include "game_level.hpp"
 #include "game_map.hpp"
 #include "mario.hpp"
 #include "os_control_settings.hpp"
@@ -28,9 +30,9 @@ int main() {
 	biv::os::init_settings();
 	
 	biv::Game game;
-	biv::UIFactory* ui_factory = new biv::ConsoleUIFactory();
-	ui_factory->create_game_data(&game);
+	biv::UIFactory* ui_factory = new biv::ConsoleUIFactory(&game);
 	biv::GameMap* game_map = ui_factory->get_game_map();
+	biv::GameLevel* game_level = new biv::FirstLevel(ui_factory);
 	biv::Mario* mario = ui_factory->get_mario();
 	
 	biv::os::UserKeyInput user_input;
@@ -63,6 +65,12 @@ int main() {
 		
 		game.move_objs_vertically();
 		game.check_vertically_static_collisions();
+		
+		if (game_map->is_below_map(mario->get_top())) {
+			game_level->restart();
+			mario = ui_factory->get_mario();
+			std::this_thread::sleep_for(1000ms);
+		}
 		
 		// 4. Обновление изображения на экране
 		game_map->refresh();
