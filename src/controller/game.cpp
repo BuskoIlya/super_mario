@@ -98,21 +98,11 @@ void Game::move_objs_vertically() noexcept {
 }
 
 void Game::remove_collisionable(Collisionable* obj) {
-	collisionable_objs.erase(
-		std::remove(
-			collisionable_objs.begin(), collisionable_objs.end(), obj
-		), 
-		collisionable_objs.end()
-	);
+	remove_obj(collisionable_objs, obj);
 }
 
 void Game::remove_map_movable(MapMovable* obj) {
-	map_movable_objs.erase(
-		std::remove(
-			map_movable_objs.begin(), map_movable_objs.end(), obj
-		), 
-		map_movable_objs.end()
-	);
+	remove_obj(map_movable_objs, obj);
 }
 
 void Game::remove_mario() noexcept {
@@ -120,12 +110,7 @@ void Game::remove_mario() noexcept {
 }
 
 void Game::remove_movable(Movable* obj) {
-	movable_objs.erase(
-		std::remove(
-			movable_objs.begin(), movable_objs.end(), obj
-		), 
-		movable_objs.end()
-	);
+	remove_obj(movable_objs, obj);
 }
 
 void Game::remove_objs() {
@@ -137,14 +122,22 @@ void Game::remove_objs() {
 }
 
 void Game::remove_static_obj(Rect* obj) {
-	static_objs.erase(
-		std::remove(
-			static_objs.begin(), static_objs.end(), obj
-		), 
-		static_objs.end()
-	);
+	remove_obj(static_objs, obj);
 }
 
 void Game::start_level() noexcept {
 	is_level_end_ = false;
+}
+
+// ----------------------------------------------------------------------------
+// 									PRIVATE
+// ----------------------------------------------------------------------------
+template<class T>
+void Game::remove_obj(std::vector<T*>& container, T* obj) {
+	container.erase(
+		std::remove(
+			container.begin(), container.end(), obj
+		), 
+		container.end()
+	);
 }

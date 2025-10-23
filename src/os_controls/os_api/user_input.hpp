@@ -2,7 +2,7 @@
 
 namespace biv {
 	namespace os {
-		enum class UserKeyInput {
+		enum class UserInput {
 			EXIT,
 			MAP_LEFT,
 			MAP_RIGHT,
@@ -10,6 +10,6 @@ namespace biv {
 			NO_INPUT
 		};
 	
-		UserKeyInput get_user_key_input();
+		UserInput get_user_input();
 	}
 }

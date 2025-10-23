@@ -52,5 +52,9 @@ namespace biv {
 			void remove_static_obj(Rect*);
 			
 			void start_level() noexcept;
+
+		private:
+			template<class T>
+			void remove_obj(std::vector<T*>& container, T* obj);
 	};
 }

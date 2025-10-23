@@ -22,7 +22,7 @@
 #include "mario.hpp"
 #include "os_control_settings.hpp"
 #include "ui_factory.hpp"
-#include "user_key_input.hpp"
+#include "user_input.hpp"
 
 int main() {
 	// 1. Установка параметров игры
@@ -35,29 +35,29 @@ int main() {
 	biv::GameLevel* game_level = new biv::FirstLevel(ui_factory);
 	biv::Mario* mario = ui_factory->get_mario();
 	
-	biv::os::UserKeyInput user_input;
+	biv::os::UserInput user_input;
 	do {
 		// 2. Получение пользовательского ввода	
-		user_input = biv::os::get_user_key_input();
+		user_input = biv::os::get_user_input();
 		switch (user_input) {
-			case biv::os::UserKeyInput::MAP_LEFT:
+			case biv::os::UserInput::MAP_LEFT:
 				mario->move_map_left();
 				if (!game.check_static_collisions(mario)) {
 					game.move_map_left();
 				}
 				mario->move_map_right();
 				break;
-			case biv::os::UserKeyInput::MAP_RIGHT:
+			case biv::os::UserInput::MAP_RIGHT:
 				mario->move_map_right();
 				if (!game.check_static_collisions(mario)) {
 					game.move_map_right();
 				}
 				mario->move_map_left();
 				break;
-			case biv::os::UserKeyInput::MARIO_JUMP:
+			case biv::os::UserInput::MARIO_JUMP:
 				mario->jump();
 				break;
-			case biv::os::UserKeyInput::EXIT:
+			case biv::os::UserInput::EXIT:
 				game.finish();
 				break;
 		}
