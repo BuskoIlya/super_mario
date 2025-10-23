@@ -16,6 +16,8 @@ namespace biv {
 			virtual void clear_data() = 0;
 			virtual void create_mario(
 				const Coord& top_left, const int width, const int height) = 0;
+			virtual void create_shelf(
+				const Coord& top_left, const int width, const int height) = 0;
 			virtual void create_ship(
 				const Coord& top_left, const int width, const int height) = 0;
 			virtual GameMap* get_game_map() = 0;

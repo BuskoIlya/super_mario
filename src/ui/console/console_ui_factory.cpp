@@ -11,6 +11,7 @@ void ConsoleUIFactory::clear_data() {
 	game_map->remove_objs();
 	delete mario;
 	mario = nullptr;
+	shelves.clear();
 	ships.clear();
 }
 
@@ -29,6 +30,16 @@ void ConsoleUIFactory::create_mario(
 	game->add_movable(mario);
 	game->add_mario(mario);
 	game_map->add_obj(mario);
+}
+
+void ConsoleUIFactory::create_shelf(
+	const Coord& top_left, const int width, const int height
+) {
+	ConsoleShelf* shelf = new ConsoleShelf(top_left, width, height);
+	shelves.push_back(shelf);
+	game->add_map_movable(shelf);
+	game->add_static_obj(shelf);
+	game_map->add_obj(shelf);
 }
 
 void ConsoleUIFactory::create_ship(
