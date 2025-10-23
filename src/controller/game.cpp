@@ -26,15 +26,6 @@ void Game::add_static_obj(Rect* obj) {
 	static_objs.push_back(obj);
 }
 
-bool Game::check_static_collisions(Collisionable* obj) const noexcept {
-	for (Rect* static_obj: static_objs) {
-		if (obj->has_collision(static_obj)) {
-			return true;
-		}
-	}
-	return false;
-}
-
 void Game::check_horizontally_static_collisions() noexcept {
 	for (Collisionable* obj: collisionable_objs) {
 		for (Rect* static_obj: static_objs) {
@@ -44,6 +35,32 @@ void Game::check_horizontally_static_collisions() noexcept {
 			}
 		}
 	}
+}
+
+void Game::check_mario_collision() {
+	for (int i = 0; i < collisionable_objs.size(); i++) {
+		Collisionable* obj = collisionable_objs[i];
+		if (obj->has_collision(mario)) {
+			obj->process_mario_collision(mario);
+			if (!mario->is_alive()) {
+				break;
+			} else if (!obj->is_alive()) {
+				// TODO
+				collisionable_objs[i] = collisionable_objs.back();
+				collisionable_objs.pop_back();
+				i--;
+			}
+		}
+	}
+}
+
+bool Game::check_static_collisions(Collisionable* obj) const noexcept {
+	for (Rect* static_obj: static_objs) {
+		if (obj->has_collision(static_obj)) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void Game::check_vertically_static_collisions() noexcept {

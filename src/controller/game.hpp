@@ -31,8 +31,9 @@ namespace biv {
 			void add_static_obj(Rect*);
 			
 			void check_horizontally_static_collisions() noexcept;
-			void check_vertically_static_collisions() noexcept;
+			void check_mario_collision();
 			bool check_static_collisions(Collisionable* obj) const noexcept;
+			void check_vertically_static_collisions() noexcept;
 			
 			void finish() noexcept;
 			

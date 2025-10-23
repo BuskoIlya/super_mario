@@ -14,8 +14,8 @@ namespace biv {
 			Rect get_rect() const noexcept override;
 			Speed get_speed() const noexcept override;
 
-			void process_hero_collision(Collisionable*) noexcept override;
 			void process_horizontal_static_collision(Rect*) noexcept override;
+			void process_mario_collision(Collisionable*) noexcept override;
 			void process_vertical_static_collision(Rect*) noexcept override;
 	};
 }

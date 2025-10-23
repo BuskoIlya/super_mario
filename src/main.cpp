@@ -69,7 +69,12 @@ int main() {
 		game.move_objs_vertically();
 		game.check_vertically_static_collisions();
 		
-		if (game_map->is_below_map(mario->get_top())) {
+		game.check_mario_collision();
+		
+		if (
+			game_map->is_below_map(mario->get_top())
+			|| !mario->is_alive()
+		) {
 			game_level->restart();
 			mario = ui_factory->get_mario();
 			std::this_thread::sleep_for(1000ms);

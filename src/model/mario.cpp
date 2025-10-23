@@ -23,12 +23,12 @@ void Mario::move_map_right() noexcept {
 	move_horizontal_offset(-biv::MapMovable::MAP_STEP);
 }
 
-void Mario::process_hero_collision(Collisionable* hero) noexcept {}
-
 void Mario::process_horizontal_static_collision(Rect* obj) noexcept {
 	hspeed = -hspeed;
 	move_horizontally();
 }
+
+void Mario::process_mario_collision(Collisionable* mario) noexcept {}
 
 void Mario::process_vertical_static_collision(Rect* obj) noexcept {
 	if (vspeed > 0) {
