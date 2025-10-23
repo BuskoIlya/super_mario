@@ -14,6 +14,8 @@ namespace biv {
 
 		public:
 			virtual void clear_data() = 0;
+			virtual void create_enemy(
+				const Coord& top_left, const int width, const int height) = 0;
 			virtual void create_mario(
 				const Coord& top_left, const int width, const int height) = 0;
 			virtual void create_shelf(

@@ -1,5 +1,6 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
+		console_enemy.cpp
 		console_game_map.cpp
 		console_mario.cpp
 		console_shelf.cpp

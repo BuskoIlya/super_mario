@@ -1,5 +1,6 @@
 #pragma once
 
+#include "console_enemy.hpp"
 #include "console_game_map.hpp"
 #include "console_mario.hpp"
 #include "console_shelf.hpp"
@@ -13,11 +14,15 @@ namespace biv {
 			std::vector<ConsoleShelf*> shelves;
 			std::vector<ConsoleShip*> ships;
 			ConsoleMario* mario = nullptr;
+			std::vector<ConsoleEnemy*> enemies;
 
 		public:
 			ConsoleUIFactory(Game* game);
 			
 			void clear_data() override;
+			void create_enemy(
+				const Coord& top_left, const int width, const int height
+			) override;
 			void create_mario(
 				const Coord& top_left, const int width, const int height
 			) override;

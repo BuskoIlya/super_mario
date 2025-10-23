@@ -27,8 +27,8 @@ void Game::add_static_obj(Rect* obj) {
 }
 
 bool Game::check_static_collisions(Collisionable* obj) const noexcept {
-	for (Rect* ship: static_objs) {
-		if (obj->has_collision(ship)) {
+	for (Rect* static_obj: static_objs) {
+		if (obj->has_collision(static_obj)) {
 			return true;
 		}
 	}
@@ -37,9 +37,9 @@ bool Game::check_static_collisions(Collisionable* obj) const noexcept {
 
 void Game::check_horizontally_static_collisions() noexcept {
 	for (Collisionable* obj: collisionable_objs) {
-		for (Rect* ship: static_objs) {
-			if (obj->has_collision(ship)) {
-				obj->process_horizontal_static_collision(ship);
+		for (Rect* static_obj: static_objs) {
+			if (obj->has_collision(static_obj)) {
+				obj->process_horizontal_static_collision(static_obj);
 				break;
 			}
 		}
@@ -52,9 +52,9 @@ void Game::check_vertically_static_collisions() noexcept {
 	}
 	
 	for (Collisionable* obj: collisionable_objs) {
-		for (Rect* ship: static_objs) {
-			if (obj->has_collision(ship)) {
-				obj->process_vertical_static_collision(ship);
+		for (Rect* static_obj: static_objs) {
+			if (obj->has_collision(static_obj)) {
+				obj->process_vertical_static_collision(static_obj);
 				break;
 			}
 		}

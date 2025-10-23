@@ -39,4 +39,7 @@ void FirstLevel::init_data() {
 	ui_factory->create_ship({120, 20}, 10, 7);
 	ui_factory->create_ship({150, 25}, 40, 2);
 	ui_factory->create_ship({210, 20}, 15, 7);
+	
+	ui_factory->create_enemy({25, 10}, 3, 2);
+	ui_factory->create_enemy({80, 10}, 3, 2);
 }

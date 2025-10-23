@@ -1,6 +1,7 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
 		collisionable.cpp
+		enemy.cpp
 		game_map.cpp
 		mario.cpp
 		movable.cpp
