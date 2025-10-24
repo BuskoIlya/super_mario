@@ -10,5 +10,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 add_subdirectory(os_controls)
 add_subdirectory(controller)
+add_subdirectory(levels)
 add_subdirectory(model)
+add_subdirectory(objects)
 add_subdirectory(ui)
