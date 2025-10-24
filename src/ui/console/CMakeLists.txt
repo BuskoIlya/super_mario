@@ -1,9 +1,11 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
+		console_box.cpp
 		console_enemy.cpp
+		console_full_box.cpp
 		console_game_map.cpp
 		console_mario.cpp
-		console_shelf.cpp
+		console_money.cpp
 		console_ship.cpp
 		console_ui_factory.cpp
 		console_ui_obj_rect_adapter.cpp

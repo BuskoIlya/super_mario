@@ -42,9 +42,9 @@ void Game::check_mario_collision() {
 		Collisionable* obj = collisionable_objs[i];
 		if (obj->has_collision(mario)) {
 			obj->process_mario_collision(mario);
-			if (!mario->is_alive()) {
+			if (!mario->is_active()) {
 				break;
-			} else if (!obj->is_alive()) {
+			} else if (!obj->is_active()) {
 				// TODO
 				collisionable_objs[i] = collisionable_objs.back();
 				collisionable_objs.pop_back();

@@ -11,10 +11,10 @@
 namespace biv {
 	class Game {
 		private:
-			std::vector<Collisionable*> collisionable_objs;
 			std::vector<MapMovable*> map_movable_objs;
-			std::vector<Movable*> movable_objs;
 			std::vector<Rect*> static_objs;
+			std::vector<Collisionable*> collisionable_objs;
+			std::vector<Movable*> movable_objs;
 			
 			Mario* mario = nullptr;
 			

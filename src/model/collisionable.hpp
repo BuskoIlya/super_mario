@@ -6,11 +6,11 @@
 namespace biv {
 	class Collisionable {
 		protected:
-			bool alive = true;
+			bool is_active_ = true;
 
 		public:
 			bool has_collision(Rect*) const noexcept;
-			bool is_alive() const noexcept;
+			bool is_active() const noexcept;
 			void kill() noexcept;
 
 			virtual Rect get_rect() const noexcept = 0;

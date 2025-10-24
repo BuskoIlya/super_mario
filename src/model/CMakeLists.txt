@@ -1,9 +1,11 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
+		full_box.cpp
 		collisionable.cpp
 		enemy.cpp
 		game_map.cpp
 		mario.cpp
+		money.cpp
 		movable.cpp
 		rect.cpp
 		rect_map_movable_adapter.cpp

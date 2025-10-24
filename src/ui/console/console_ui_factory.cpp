@@ -11,9 +11,21 @@ void ConsoleUIFactory::clear_data() {
 	game_map->remove_objs();
 	delete mario;
 	mario = nullptr;
-	shelves.clear();
+	boxes.clear();
+	full_boxes.clear();
 	ships.clear();
 	enemies.clear();
+	moneys.clear();
+}
+
+void ConsoleUIFactory::create_box(
+	const Coord& top_left, const int width, const int height
+) {
+	ConsoleBox* box = new ConsoleBox(top_left, width, height);
+	boxes.push_back(box);
+	game->add_map_movable(box);
+	game->add_static_obj(box);
+	game_map->add_obj(box);
 }
 
 void ConsoleUIFactory::create_enemy(
@@ -25,6 +37,17 @@ void ConsoleUIFactory::create_enemy(
 	game->add_movable(enemy);
 	game->add_collisionable(enemy);
 	game_map->add_obj(enemy);
+}
+
+void ConsoleUIFactory::create_full_box(
+	const Coord& top_left, const int width, const int height
+) {
+	ConsoleFullBox* full_box = new ConsoleFullBox(top_left, width, height, this);
+	full_boxes.push_back(full_box);
+	game->add_collisionable(full_box);
+	game->add_map_movable(full_box);
+	game->add_static_obj(full_box);
+	game_map->add_obj(full_box);
 }
 
 void ConsoleUIFactory::create_mario(
@@ -44,14 +67,15 @@ void ConsoleUIFactory::create_mario(
 	game_map->add_obj(mario);
 }
 
-void ConsoleUIFactory::create_shelf(
+void ConsoleUIFactory::create_money(
 	const Coord& top_left, const int width, const int height
 ) {
-	ConsoleShelf* shelf = new ConsoleShelf(top_left, width, height);
-	shelves.push_back(shelf);
-	game->add_map_movable(shelf);
-	game->add_static_obj(shelf);
-	game_map->add_obj(shelf);
+	ConsoleMoney* money = new ConsoleMoney(top_left, width, height);
+	moneys.push_back(money);
+	game->add_map_movable(money);
+	game->add_movable(money);
+	game->add_collisionable(money);
+	game_map->add_obj(money);
 }
 
 void ConsoleUIFactory::create_ship(
