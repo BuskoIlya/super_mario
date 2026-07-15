@@ -1,3 +1,7 @@
+/**
+	- Покажите на диаграмме иерархию наследования для класса ConsoleEnemy.
+*/
+
 #pragma once
 
 #include "console_ui_obj_rect_adapter.hpp"

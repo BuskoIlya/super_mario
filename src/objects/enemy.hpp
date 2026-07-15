@@ -1,3 +1,8 @@
+/**
+	- Если создавать класс FlyableEenemy, JumpableEnemy и другие виды врагов, 
+		то почему их нельзя наследовать от Enemy?
+*/
+
 #pragma once
 
 #include "collisionable.hpp"
