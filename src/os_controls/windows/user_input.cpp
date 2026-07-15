@@ -11,7 +11,7 @@ UserInput biv::os::get_user_input() {
 		return UserInput::MAP_LEFT;
 	} else if (GetKeyState(VK_SPACE) < 0) {
 		return UserInput::MARIO_JUMP;
-	} else if (GetKeyState(VK_ESCAPE) < 0) {
+	} else if (GetKeyState('Q') < 0) {
 		return UserInput::EXIT;
 	} else {
 		return UserInput::NO_INPUT;

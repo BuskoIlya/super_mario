@@ -31,7 +31,7 @@ int main() {
 	
 	biv::Game game;
 	biv::UIFactory* ui_factory = new biv::ConsoleUIFactory(&game);
-	biv::GameMap* game_map = ui_factory->get_game_map();
+	biv::GameMap* game_map = ui_factory->get_game_map(30, 200);
 	biv::GameLevel* game_level = new biv::FirstLevel(ui_factory);
 	biv::Mario* mario = ui_factory->get_mario();
 	

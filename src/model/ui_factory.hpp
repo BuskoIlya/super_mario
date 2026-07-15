@@ -26,10 +26,7 @@ namespace biv {
 				const Coord& top_left, const int width, const int height) = 0;
 			virtual void create_ship(
 				const Coord& top_left, const int width, const int height) = 0;
-			virtual GameMap* get_game_map() = 0;
+			virtual GameMap* get_game_map(const int height, const int width) = 0;
 			virtual Mario* get_mario() = 0;
-			
-		protected:
-			virtual void create_game_map() = 0;
 	};
 }

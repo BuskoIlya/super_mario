@@ -2,9 +2,7 @@
 
 using biv::ConsoleUIFactory;
 
-ConsoleUIFactory::ConsoleUIFactory(Game* game) : UIFactory(game) {
-	create_game_map();
-}
+ConsoleUIFactory::ConsoleUIFactory(Game* game) : UIFactory(game) {}
 
 void ConsoleUIFactory::clear_data() {
 	game->remove_objs();
@@ -88,17 +86,13 @@ void ConsoleUIFactory::create_ship(
 	game_map->add_obj(ship);
 }
 
-biv::GameMap* ConsoleUIFactory::get_game_map() {
+biv::GameMap* ConsoleUIFactory::get_game_map(const int height, const int width) {
+	if (game_map == nullptr) {
+		game_map = new ConsoleGameMap(height, width);
+	}
 	return game_map;
 }
 
 biv::Mario* ConsoleUIFactory::get_mario() {
 	return mario;
-}
-
-// ----------------------------------------------------------------------------
-// 									PRIVATE
-// ----------------------------------------------------------------------------
-void ConsoleUIFactory::create_game_map() {
-	game_map = new ConsoleGameMap(30, 200);
 }
