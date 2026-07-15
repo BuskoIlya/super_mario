@@ -1,7 +1,7 @@
 target_sources(${PROJECT_NAME}
 	PRIVATE
-		windows_control_settings.cpp
-		windows_keyboard.cpp
+		linux_control_settings.cpp
+		linux_keyboard.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE

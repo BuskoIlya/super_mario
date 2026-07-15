@@ -7,4 +7,4 @@
 *.s
 *.o
 
-build_ninja/
+build_*/

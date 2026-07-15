@@ -1,8 +1,10 @@
-#include "os_control_settings.hpp"
+#include "windows_control_settings.hpp"
 
 #include <windows.h>
 
-void biv::os::init_settings() {
+using biv::WindowsControlSettings;
+
+void WindowsControlSettings::init() {
 	void* handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO structCursorInfo;
 	GetConsoleCursorInfo(handle, &structCursorInfo);
@@ -10,7 +12,7 @@ void biv::os::init_settings() {
 	SetConsoleCursorInfo(handle, &structCursorInfo);
 }
 
-void biv::os::set_cursor_start_position() {
+void WindowsControlSettings::set_cursor_start_position() {
 	COORD coord;
 	coord.X = 0;
 	coord.Y = 0;

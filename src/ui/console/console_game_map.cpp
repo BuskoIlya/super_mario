@@ -4,6 +4,10 @@
 #include <cstdio>
 #include <iostream>
 
+#ifdef LINUX_CONSOLE
+	#include <ncurses.h>
+#endif
+
 using biv::ConsoleGameMap;
 
 ConsoleGameMap::ConsoleGameMap(const int height, const int width) 
@@ -36,7 +40,7 @@ void ConsoleGameMap::clear() noexcept {
 	map[0][width] = '\0';
 	
 	for (int i = 1; i < height - 3; i++) {
-		std::sprintf(map[i], map[0]);
+		std::sprintf(map[i], "%s", map[0]);
 	}
 	
 	// Вода
@@ -46,7 +50,7 @@ void ConsoleGameMap::clear() noexcept {
 	map[height - 3][width] = '\0';
 	
 	for (int i = height - 2; i < height; i++) {
-		std::sprintf(map[i], map[height - 3]);
+		std::sprintf(map[i], "%s", map[height - 3]);
 	}
 }
 
@@ -80,7 +84,16 @@ void ConsoleGameMap::remove_objs() {
 }
 
 void ConsoleGameMap::show() const noexcept {
-	for (int i = 0; i < height; i++) {
-		std::cout << map[i];
-	}
+	#ifdef WINDOWS_CONSOLE
+		for (int i = 0; i < height; i++) {
+			std::cout << map[i];
+		}
+	#elif defined(LINUX_CONSOLE)
+		for (int i = 0; i < height; i++) {
+			//printw("%s", map[i]);
+			move(i, 0); 
+			addstr(map[i]);
+		}
+		::refresh();
+	#endif
 }

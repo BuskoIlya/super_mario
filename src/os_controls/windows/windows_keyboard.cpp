@@ -1,10 +1,11 @@
-#include "user_input.hpp"
+#include "windows_keyboard.hpp"
 
 #include <windows.h>
 
-using biv::os::UserInput;
+using biv::UserInput;
+using biv::WindowsKeyBoard;
 
-UserInput biv::os::get_user_input() {
+UserInput WindowsKeyBoard::get_user_input() {
 	if (GetKeyState('A') < 0) {
 		return UserInput::MAP_RIGHT;
 	} else if (GetKeyState('D') < 0) {
@@ -17,3 +18,6 @@ UserInput biv::os::get_user_input() {
 		return UserInput::NO_INPUT;
 	}
 }
+
+void WindowsKeyBoard::on() {}
+void WindowsKeyBoard::off() {}
